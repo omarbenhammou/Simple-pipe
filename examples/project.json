@@ -1,0 +1,6 @@
+{
+  "project": "my-app",
+  "services": {
+    "web": {"context": ".", "dockerfile": "Dockerfile"}
+  }
+}

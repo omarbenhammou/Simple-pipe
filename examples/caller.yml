@@ -1,0 +1,26 @@
+name: Application CI/CD
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  pipeline:
+    # Replace BOTH PINNED_COMMIT placeholders with a reviewed Simple-pipe commit SHA.
+    uses: omarbenhammou/Simple-pipe/.github/workflows/pipeline.yml@PINNED_COMMIT
+    with:
+      toolkit-ref: PINNED_COMMIT
+      deploy: false
+      # For a private network, provision a dedicated deployment runner separately:
+      # runner: '["self-hosted", "linux", "simple-pipe-network"]'
+    secrets:
+      TOOLKIT_READ_TOKEN: ${{ secrets.TOOLKIT_READ_TOKEN }}
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+      DEPLOY_DIRECTORY: ${{ secrets.DEPLOY_DIRECTORY }}
+      DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}

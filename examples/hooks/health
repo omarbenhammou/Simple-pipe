@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Set this to the real readiness endpoint, using the server's trusted CA if needed.
+curl --fail --silent --show-error --retry 12 --retry-all-errors --retry-delay 5 \
+  --max-time 10 https://YOUR_APP_HOST/health

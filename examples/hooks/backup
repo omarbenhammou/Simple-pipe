@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Implement an application-consistent backup; fail if it cannot be created.
+# Keep it outside the release directory. Encrypt and test restore separately.
+echo 'Configure the server backup hook before enabling deployment.' >&2
+exit 1

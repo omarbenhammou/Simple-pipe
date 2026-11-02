@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Adapt the service and migration command; install as hooks/migrate only if needed.
+docker compose --project-directory "$SP_DIRECTORY" --env-file "$SP_DIRECTORY/.env" \
+  -p "$SP_PROJECT" -f "$SP_DIRECTORY/compose.yml" -f "$SP_OVERRIDE" \
+  run --rm --no-deps web python -m alembic upgrade head
